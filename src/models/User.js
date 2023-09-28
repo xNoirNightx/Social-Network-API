@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Thought = require('./Thought');
 
 const userSchema = new mongoose.Schema(
   {
@@ -39,6 +40,15 @@ const userSchema = new mongoose.Schema(
 // calculate the friend count
 userSchema.virtual('friendCount').get(function () {
   return this.friends.length;
+});
+
+
+// bonus trigger 
+userSchema.pre('remove', function (next) {
+  // all thoughts by this user to remove them 
+  Thought.deleteMany({ userId: this._id })
+    .then(() => next())
+    .catch(next);
 });
 
 const User = mongoose.model('User', userSchema);

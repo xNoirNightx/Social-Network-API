@@ -9,11 +9,18 @@ const {
   removeFriend,
 } = require('../controllers/user-controller');
 
-// routes for users
-router.route('/').get(getAllUsers).post(createUser);
-router.route('/:userId').get(getUserById).put(updateUser).delete(deleteUser);
+// organizing this better for routes it was ugly before 
+router.route('/')
+  .get(getAllUsers) 
+  .post(createUser); 
 
-// routes for users friends
-router.route('/:userId/friends/:friendId').post(addFriend).delete(removeFriend);
+router.route('/:userId')
+  .get(getUserById) 
+  .put(updateUser) 
+  .delete(deleteUser); 
+
+router.route('/:userId/friends/:friendId')
+  .post(addFriend) 
+  .delete(removeFriend); 
 
 module.exports = router;
