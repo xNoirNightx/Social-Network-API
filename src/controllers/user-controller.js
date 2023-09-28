@@ -4,7 +4,7 @@ const userController = {
 
 
   // all users with their thoughts
-  getAllUsers(res) {
+  getAllUsers(req, res) {
     User.find({})
       .populate({
         path: 'thoughts',

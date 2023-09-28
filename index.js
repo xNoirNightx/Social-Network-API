@@ -1,6 +1,7 @@
 //  modules
 const mongoose = require('mongoose');
 const express = require('express');
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 // fforgot to add express whooopppss
@@ -19,6 +20,9 @@ const thoughtRoutes = require('./src/routes/thought-routes');
 app.use('/api/users', userRoutes);
 app.use('/api/thoughts', thoughtRoutes);
 
+//  parse to JSON
+app.use(bodyParser.json());
+
 // Add other routes here if needed ****
 
 // mongo  URI
@@ -29,7 +33,6 @@ mongoose
   .connect(dburl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000,
   })
   .then(() => {
     console.log('Connected to MongoDB');
