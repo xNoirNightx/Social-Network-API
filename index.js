@@ -17,11 +17,12 @@ app.listen(PORT, () => {
 const userRoutes = require('./src/routes/user-routes');
 const thoughtRoutes = require('./src/routes/thought-routes');
 
+//  parse to JSON
+app.use(bodyParser.json());
+
 app.use('/api/users', userRoutes);
 app.use('/api/thoughts', thoughtRoutes);
 
-//  parse to JSON
-app.use(bodyParser.json());
 
 // Add other routes here if needed ****
 
