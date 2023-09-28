@@ -29,8 +29,6 @@ mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
   })
   .then(() => {
     console.log('Connected to MongoDB');
@@ -38,6 +36,7 @@ mongoose
   .catch((error) => {
     console.error('Error connecting to MongoDB:', error);
   });
+
 
 //  mongo connection here
 mongoose.connection.on('connected', () => {
