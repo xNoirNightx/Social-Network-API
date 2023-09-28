@@ -22,11 +22,11 @@ app.use('/api/thoughts', thoughtRoutes);
 // Add other routes here if needed ****
 
 // mongo  URI
-const dbURI = 'mongodb://localhost:27017/SocialNetwork';
+const dburl = process.env.MONGODB_URI||'mongodb://127.0.0.1:27017/SocialNetwork'
 
 // connect to the Mongo
 mongoose
-  .connect(dbURI, {
+  .connect(dburl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     serverSelectionTimeoutMS: 5000,
