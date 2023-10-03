@@ -24,5 +24,12 @@ router.route('/:thoughtId/reactions')
   .post(createReaction)
   .delete(deleteReaction);
 
+
+// Test route
+router.get('/', (req, res) => {
+  console.log('Received a GET request for thoughts');
+  res.send('Hello, world!');
+});
+
   
 module.exports = router;

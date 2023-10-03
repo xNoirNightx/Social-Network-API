@@ -25,18 +25,18 @@ const thoughtController = {
   // make a new thought
   createThought(req, res) {
     const { thoughtText, username, userId } = req.body;
-  
+
     // Check if the user exists
     User.findById(userId)
       .then((user) => {
         if (!user) {
           return res.status(404).json({ message: 'User not found' });
         }
-  
+
         // Create a new thought
         return Thought.create({ thoughtText, username })
           .then((thoughtData) => {
-            // created thoughts _id to the users thoughts array
+            // created thought id to the users thoughts array
             user.thoughts.push(thoughtData._id);
             return user.save();
           })
