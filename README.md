@@ -33,15 +33,15 @@ Build an API for a social network web application where users can share their th
  - Clone the repository.
  - Navigate to the project directory.
  - Install the dependencies: npm install
- - 
- - 
+ 
+ 
 
 **Note**: add your own mySQL information to db.js or .env ( add to .gitignore ) for higher security.
 
  ## Usage
  - To use the Social-Network-API, run the following command inside the "Root" folder:
- - In terminal enter NPM RUN SEED  , Followed by NPM RUN START
- - Follow [Video Demo]() if you need further assistance.
+ - In terminal enter node index.js 
+ - Follow [Video Demo](https://www.dropbox.com/scl/fi/zpxbm6511vli8un09uqgz/Challenge18.mp4?rlkey=q3nu4bn59czhrpfllh2igdh3g&dl=0) if you need further assistance.
  
 
 ## Mock-Up
@@ -50,8 +50,10 @@ The following image shows the application.
 
 **Note**: This image is a screen shot once I finished the assignment.
 
-![Social-Network-API]()
-![Social-Network-API]()
+![Social-Network-API](/assets/screenshot1.png)
+![Social-Network-API](/assets/screenshot2.png)
+![Social-Network-API](/assets/screenshot3.png)
+
 
 ## Credits
 - [Macro Font](https://patorjk.com/software/taag/#p=display&f=Small%20Keyboard&t=Social-Network-API)
