@@ -105,7 +105,7 @@ const thoughtController = {
   createReaction(req, res) {
     const { thoughtId } = req.params;
     const { reactionBody, username } = req.body;
-
+  
     Thought.findByIdAndUpdate(
       thoughtId,
       { $push: { reactions: { reactionBody, username } } },
@@ -124,25 +124,29 @@ const thoughtController = {
   },
 
   // remove a reaction on a thought
-  deleteReaction(req, res) {
-    const { thoughtId, reactionId } = req.params;
+deleteReaction(req, res) {
+  const { thoughtId, reactionId } = req.params;
 
-    Thought.findByIdAndUpdate(
-      thoughtId,
-      { $pull: { reactions: { _id: reactionId } } },
-      { new: true }
-    )
-      .then((thoughtData) => {
-        if (!thoughtData) {
-          return res.status(404).json({ message: "Thought not found" });
-        }
-        res.json(thoughtData);
-      })
-      .catch((err) => {
-        console.error("Error in deleteReaction:", err);
-        res.status(500).json(err);
-      });
-  },
+  console.log("Entering deleteReaction controller"); // Add this log
+
+  Thought.findByIdAndUpdate(
+    thoughtId,
+    { $pull: { reactions: { _id: reactionId } } },
+    { new: true }
+  )
+    .then((thoughtData) => {
+      console.log("Reaction deleted successfully"); // Add this log
+
+      if (!thoughtData) {
+        return res.status(404).json({ message: "Thought not found" });
+      }
+      res.json(thoughtData);
+    })
+    .catch((err) => {
+      console.error("Error in deleteReaction:", err);
+      res.status(500).json(err);
+    });
+},
 };
 
 module.exports = thoughtController;
